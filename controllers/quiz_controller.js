@@ -11,3 +11,8 @@ exports.answer = function(req, res){
     res.render('quizes/answer',{respuesta: 'Incorrecto'});
   }
 }
+
+//GET Autors
+exports.autors = function(req, res){
+  res.render('autors', { autor: 'Marlon Cárdenas' });
+}
