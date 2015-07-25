@@ -33,6 +33,7 @@ nav span             {
    border-collapse: collapse;
    padding: 0.3em;
    caption-side: bottom;
+	 font-size: 12px;
 }
 #table_e caption {
    padding: 0.3em;

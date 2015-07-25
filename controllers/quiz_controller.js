@@ -25,10 +25,17 @@ exports.question = function(req, res){
 
 
 exports.index = function(req, res){
-  models.Quiz.findAll().then(function(quizes){
-    res.render('quizes/index.ejs', {quizes: quizes});
-  })
-  //res.render('quizes/question', {pregunta: 'Capital de Italia'});
+  var buscar = (req.query.buscar || '');
+  if(buscar != null && buscar != ''){
+    models.Quiz.findAll({where: ["pregunta like ?", '%' + buscar + '%']}).then(function(quizes){
+      res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar});
+    });
+  }else{
+    models.Quiz.findAll().then(function(quizes){
+      res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar});
+    })
+  }
+
 }
 
 //GET quiz for Id
