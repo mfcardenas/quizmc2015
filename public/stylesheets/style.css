@@ -2,17 +2,43 @@
 body                 { font: 16px Georgia, serif; }
 
 #page-wrap           { margin: 2% auto; color: white; }
-#page-wrap > .main   { border: 1px solid #999; padding: 1%;
+#page-wrap > .main   { border: 1px solid #2793E6; padding: 1%;
 	                   margin-bottom: 1px; color: black;}
 
 section > div        { padding: 20px; }
-header, nav, section { background: #eee; text-align: center;}
-footer               { background: #eee; text-align: center;}
-nav span             { margin: 0px 10px 0px 0px;
-  					   width: 100%;
-  					   display: inline-block;}
+header, nav { background: #f1f1f1; text-align: center;}
+section							 { background: #fff; text-align: center;}
+footer               { background: #f1f1f1; text-align: center;}
+nav span             {
+		margin: 0px 10px 0px 0px;
+  	width: 100%;
+  	display: inline-block;
+}
 
 #ErrorMsgs           { color: #f61; font-size: smaler}
 .right 				 {float: right;}
 
 .quiz_img 			 { height: 150px; float: left;}
+
+#table_e {
+	 border-spacing:0px;
+   width: 50%;
+   border: 1px solid #c0c0c0;
+}
+#table_e th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #c0c0c0;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
+#table_e caption {
+   padding: 0.3em;
+   color: #000;
+   background: #f1f1f1;
+}
+#table_e th {
+   background: #eee;
+}
