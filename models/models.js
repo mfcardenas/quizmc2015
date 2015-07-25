@@ -37,18 +37,18 @@ exports.Quiz = Quiz;
 //Esta función crea la BD con las preguntas indicadas
 sequelize.sync().success( function(){
   Quiz.count().success(function(count){
-    if(count === 0){
+    if(count === 1){
       Quiz.create({
         pregunta: 'Capital de Italia',
         respuesta: 'Roma'
       });
       Quiz.create({
-        pregunta: 'Capital de China',
-        respuesta: 'Pekin'
+        pregunta: 'Capital de Chile',
+        respuesta: 'Santiago'
       });
       Quiz.create({
         pregunta: 'Capital de Rusia',
-        respuesta: 'Moscú'
+        respuesta: 'Moscu'
       });
       Quiz.create({
         pregunta: 'Capital de Mexico',
