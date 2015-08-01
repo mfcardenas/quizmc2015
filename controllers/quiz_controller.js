@@ -23,16 +23,25 @@ exports.question = function(req, res){
   //res.render('quizes/question', {pregunta: 'Capital de Italia'});
 }
 
+//GET /quizes/new create pregunta
+exports.new = function(req, res){
+  var quiz = models.Quiz.build(
+    {pregunta: "", respuesta: ""}
+  );
+
+  res.render('quizes/new',{quiz:quiz, errors:[]});
+};
+
 
 exports.index = function(req, res){
   var buscar = (req.query.buscar || '');
   if(buscar != null && buscar != ''){
     models.Quiz.findAll({where: ["pregunta like ?", '%' + buscar + '%']}).then(function(quizes){
-      res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar});
+      res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar, errors:[]});
     });
   }else{
     models.Quiz.findAll().then(function(quizes){
-      res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar});
+      res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar, errors:[]});
     })
   }
 
@@ -41,7 +50,7 @@ exports.index = function(req, res){
 //GET quiz for Id
 exports.show = function(req, res){
   //models.Quiz.find(req.params.quizId).then(function(quiz){
-    res.render('quizes/show', {quiz: req.quiz});
+    res.render('quizes/show', {quiz: req.quiz, errors:[]});
   //});
 };
 
@@ -63,11 +72,30 @@ exports.answer = function(req, res){
     if(req.query.respuesta === req.quiz.respuesta){
       strResp = 'Correcto';
     }
-    res.render('quizes/answer',{quiz: req.quiz, respuesta: strResp});
+    res.render('quizes/answer',{quiz: req.quiz, respuesta: strResp, errors:[]});
   //});
 }
 
 //GET Autors
 exports.autors = function(req, res){
-  res.render('autors', { autor: 'Marlon Cárdenas' });
+  res.render('autors', { autor: 'Marlon Cárdenas', errors: [] });
 }
+
+//POST Create Pregunta /quizes/create
+exports.create = function(req, res){
+  var quiz = models.Quiz.build(req.body.quiz);
+  quiz
+  .validate()
+  .then(
+    function(err){
+      if(err){
+        res.render('quizes/new', {quiz:quiz, errors: err.errors});
+      }else{
+        //Se guarda en BD la pregunta y su respuesta
+        quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
+            //se redirecciona al listado de preguntas para ver la nueva.
+            res.redirect('/quizes');
+        });
+      }
+    });
+};
