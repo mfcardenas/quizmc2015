@@ -9,7 +9,8 @@
 											document.getElementById("buscar").select();
 										}
 									</script>
-		<input type="submit" value="Buscar"/>
+		<input type="submit" value="Buscar"/><br/>
+<a href="/quizes/new"><button type="button" >Añadir Pregunta</button></a>
 	</p><br/>
 </form>
 <table id="table_e" summary="Todas las Preguntas">
@@ -17,18 +18,27 @@
 	<tbody>
     <% var i; for (i = 0; i < quizes.length; i++) { %>
         <tr>
-          <td>
+          <td width="90%">
             <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
           </td>
+					<td width="5%" style="white-space: nowrap;">
+						<a href="quizes/<%= quizes[i].id %>/edit"><img src="/images/edit.png" alt="Editar" title="Editar" width="18" heigth="18" /></a>
+					</td>
+					<td width="5%" style="white-space: nowrap;">
+						<form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
+							<button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+								<img src="/images/delete.png" alt="Borrar" title="Borrar" width="18" heigth="18" />
+							</button>
+						</form>
+					</td>
         </tr>
     <% } %>
 		<% if(quizes.length <= 0){%>
 			<tr>
-				<td style="text-align: center;">
+				<td colspan="3" style="text-align: center;">
 					No hay coincidencias, intente otra b&uacute;squeda.
 				</td>
 			</tr>
 		<% }%>
   </tbody>
 </table><p>
-<a href="/quizes/new"><button type="button" >Añadir Pregunta</button></a>

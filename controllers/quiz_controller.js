@@ -81,6 +81,19 @@ exports.autors = function(req, res){
   res.render('autors', { autor: 'Marlon Cárdenas', errors: [] });
 }
 
+//Editar
+exports.edit = function(req, res){
+  var quiz = req.quiz;
+  res.render('quizes/edit',{quiz:quiz, errors:[]});
+}
+
+//DELETE /quizes/:id
+exports.destroy = function(req, res){
+  req.quiz.destroy().then(function(){
+    res.redirect('/quizes');
+  }).catch(function(error){next(error)});
+}
+
 //POST Create Pregunta /quizes/create
 exports.create = function(req, res){
   var quiz = models.Quiz.build(req.body.quiz);
@@ -93,6 +106,27 @@ exports.create = function(req, res){
       }else{
         //Se guarda en BD la pregunta y su respuesta
         quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
+            //se redirecciona al listado de preguntas para ver la nueva.
+            res.redirect('/quizes');
+        });
+      }
+    });
+};
+
+//PUT Update Pregunta /quizes/update
+exports.update = function(req, res){
+  req.quiz.pregunta = req.body.quiz.pregunta;
+  req.quiz.respuesta = req.body.quiz.respuesta;
+
+  req.quiz
+  .validate()
+  .then(
+    function(err){
+      if(err){
+        res.render('quizes/edit', {quiz:req.quiz, errors: err.errors});
+      }else{
+        //Se guarda en BD la pregunta y su respuesta
+        req.quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
             //se redirecciona al listado de preguntas para ver la nueva.
             res.redirect('/quizes');
         });
