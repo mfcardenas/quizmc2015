@@ -37,38 +37,46 @@ exports.Quiz = Quiz;
 //Esta función crea la BD con las preguntas indicadas
 sequelize.sync().success( function(){
   Quiz.count().success(function(count){
-    if(count === 1){
+    if(count === 0){
       Quiz.create({
         pregunta: 'Capital de Italia',
-        respuesta: 'Roma'
+        respuesta: 'Roma',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Chile',
-        respuesta: 'Santiago'
+        respuesta: 'Santiago',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Rusia',
-        respuesta: 'Moscu'
+        respuesta: 'Moscu',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Mexico',
-        respuesta: 'Mexico'
+        respuesta: 'Mexico',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Reino Unido',
-        respuesta: 'Londres'
+        respuesta: 'Londres',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Portugal',
-        respuesta: 'Lisboa'
+        respuesta: 'Lisboa',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Alemania',
-        respuesta: 'Berlin'
+        respuesta: 'Berlin',
+        tema: 'humanidades'
       });
       Quiz.create({
         pregunta: 'Capital de Argentina',
-        respuesta: 'Buenos Aires'
+        respuesta: 'Buenos Aires',
+        tema: 'humanidades'
       }).success(function(){
         console.log('Base de datos Inicializada');
       });

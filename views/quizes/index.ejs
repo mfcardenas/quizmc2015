@@ -21,6 +21,19 @@
           <td width="90%">
             <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
           </td>
+					<td width="8%">
+						<!--%= quizes[i].tema %-->
+						<select id="tema_<%= quizes[i].id %>" name="tema" disabled="disabled">
+						  <option value="otro">Otro</option>
+						  <option value="humanidades">Humanidades</option>
+						  <option value="ocio">Ocio</option>
+						  <option value="ciencia">Ciencia</option>
+						  <option value="tecnologia">Tecnología</option>
+						</select>
+						<script type="text/javascript">
+							document.getElementById("tema_<%= quizes[i].id %>").value = "<%= quizes[i].tema %>";
+						</script>
+          </td>
 					<td width="5%" style="white-space: nowrap;">
 						<a href="quizes/<%= quizes[i].id %>/edit"><img src="/images/edit.png" alt="Editar" title="Editar" width="18" heigth="18" /></a>
 					</td>
@@ -35,7 +48,7 @@
     <% } %>
 		<% if(quizes.length <= 0){%>
 			<tr>
-				<td colspan="3" style="text-align: center;">
+				<td colspan="4" style="text-align: center;">
 					No hay coincidencias, intente otra b&uacute;squeda.
 				</td>
 			</tr>
