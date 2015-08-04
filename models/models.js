@@ -36,7 +36,7 @@ exports.Quiz = Quiz;
 
 //Esta función crea la BD con las preguntas indicadas
 sequelize.sync().then( function(){
-  Quiz.count().success(function(count){
+  Quiz.count().then(function(count){
     if(count === 0){
       Quiz.create({
         pregunta: 'Capital de Italia',
