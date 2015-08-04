@@ -39,44 +39,28 @@ sequelize.sync().success( function(){
   Quiz.count().success(function(count){
     if(count === 0){
       Quiz.create({
-        pregunta: 'Capital de Italia',
-        respuesta: 'Roma',
-        tema: 'humanidades'
+        pregunta: 'Capital de Italia', respuesta: 'Roma', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Chile',
-        respuesta: 'Santiago',
-        tema: 'humanidades'
+        pregunta: 'Capital de Chile', respuesta: 'Santiago', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Rusia',
-        respuesta: 'Moscu',
-        tema: 'humanidades'
+        pregunta: 'Capital de Rusia', respuesta: 'Moscu', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Mexico',
-        respuesta: 'Mexico',
-        tema: 'humanidades'
+        pregunta: 'Capital de Mexico', respuesta: 'Mexico', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Reino Unido',
-        respuesta: 'Londres',
-        tema: 'humanidades'
+        pregunta: 'Capital de Reino Unido', respuesta: 'Londres', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Portugal',
-        respuesta: 'Lisboa',
-        tema: 'humanidades'
+        pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Alemania',
-        respuesta: 'Berlin',
-        tema: 'humanidades'
+        pregunta: 'Capital de Alemania', respuesta: 'Berlin', tema: 'humanidades'
       });
       Quiz.create({
-        pregunta: 'Capital de Argentina',
-        respuesta: 'Buenos Aires',
-        tema: 'humanidades'
+        pregunta: 'Capital de Argentina', respuesta: 'Buenos Aires', tema: 'humanidades'
       }).success(function(){
         console.log('Base de datos Inicializada');
       });
