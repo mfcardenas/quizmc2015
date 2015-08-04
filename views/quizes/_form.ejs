@@ -2,13 +2,21 @@
 <input type="text" size="60" id="preg" name="quiz[pregunta]" placeholder="Escriba aquí" value="<%= quiz.pregunta%>"/><p>
 <label for="resp" class="rem">Respuesta:</label>
 <input type="text" size="60" id="resp" name="quiz[respuesta]" placeholder="Escriba aquí" value="<%= quiz.respuesta%>"/><p>
-<label for="tema" class="rem">Tema:</label>
-<select id="tema" name="quiz[tema]">
+<label for="tema_s" class="rem">Tema:</label>
+<select id="tema_s" name="quiz[tema]">
   <option value="otro">Otro</option>
   <option value="humanidades">Humanidades</option>
   <option value="ocio">Ocio</option>
   <option value="ciencia">Ciencia</option>
   <option value="tecnologia">Tecnología</option>
-</select><p>
+</select>
+<input type="hidden" value="<%= quiz.tema%>" id="tema_h" name="tema_h"/>
+<script type="text/javascript">
+  var tema_h = document.getElementById("tema_h").value;
+  if(tema_h != '' && tema_h != null){
+    document.getElementById("tema_s").value = tema_h;
+  }
+</script>
+<p>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Guardar"/>
