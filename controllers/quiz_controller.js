@@ -34,9 +34,10 @@ exports.new = function(req, res){
 
 
 exports.index = function(req, res){
-  var buscar = (req.query.buscar || '');
+  //var buscar = (req.query.buscar || '');
+  var buscar = '%' + req.query.buscar.replace(' ', '%') + '%';
   if(buscar != null && buscar != ''){
-    models.Quiz.findAll({where: ["pregunta like ?", '%' + buscar + '%']}).then(function(quizes){
+    models.Quiz.findAll({where: ["pregunta like ?", buscar], order: [['pregunta', 'ASC']]}).then(function(quizes){
       res.render('quizes/index.ejs', {quizes: quizes, buscar: buscar, errors:[]});
     });
   }else{
