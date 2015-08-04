@@ -35,7 +35,7 @@ var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 exports.Quiz = Quiz;
 
 //Esta función crea la BD con las preguntas indicadas
-sequelize.sync().success( function(){
+sequelize.sync().then( function(){
   Quiz.count().success(function(count){
     if(count === 0){
       Quiz.create({
